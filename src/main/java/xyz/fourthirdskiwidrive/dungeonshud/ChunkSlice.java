@@ -8,6 +8,7 @@ public class ChunkSlice {
     public Boolean isEmpty() {
         for(BlockState[] i : blocks) {
             for(BlockState j : i) {
+                if (j == null) continue;
                 if (!(j.isAir())) return false;
             }
         }

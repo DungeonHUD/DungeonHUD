@@ -26,10 +26,11 @@ public class MapHUD extends HUDComponent {
 
         ChunkSliceManager csm = ChunkSliceManager.getInstance();
         csm.update();
+        csm.updateSizes();
 
         chunkSlices = csm.slices;
-        for (int i = 0; i < chunkSlices.size(); ++i) {
-            for (int j = 0; j < chunkSlices.get(i).size(); ++j) {
+        for (int i = 0; i < csm.xNeeded; ++i) {
+            for (int j = 0; j < csm.yNeeded; ++j) {
                 BlockState[][] blocks = chunkSlices.get(i).get(j).blocks;
 
                 //if(chunkSlices.get(i).get(j).isEmpty()) continue;
@@ -58,8 +59,6 @@ public class MapHUD extends HUDComponent {
 
     @Override
     public void render(MatrixStack m, float partial, MinecraftClient client) {
-        drawBox(m, 20, 20, 20 + BOX_SIZE ,20 + BOX_SIZE, 2);
-
         MinecraftClient client2 = MinecraftClient.getInstance();
         renderDetailedMap(m, partial, client2);
 

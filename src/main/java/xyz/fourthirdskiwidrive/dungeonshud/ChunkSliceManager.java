@@ -11,6 +11,9 @@ public class ChunkSliceManager {
     private static ChunkSliceManager instance = null;
     private Boolean hasDoneThisAtLeastOnce = false;
 
+    public int xNeeded = 16;
+    public int yNeeded = 16;
+
     public static ChunkSliceManager getInstance() {
         if(instance == null) instance = new ChunkSliceManager();
         return instance;
@@ -30,5 +33,14 @@ public class ChunkSliceManager {
         }
 
         slices = chunkSlices;
+    }
+
+    public void updateSizes() {
+        for(int i = this.slices.size() - 1; i >= 0; --i) {
+            if (this.slices.get(i).get(0).isEmpty())
+                xNeeded = i;
+            if (this.slices.get(0).get(i).isEmpty())
+                yNeeded = i;
+        }
     }
 }
