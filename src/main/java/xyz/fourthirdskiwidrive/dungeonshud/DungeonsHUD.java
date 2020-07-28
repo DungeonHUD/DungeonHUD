@@ -31,7 +31,5 @@ public class DungeonsHUD implements ModInitializer {
 			while (menuKeyBinding.wasPressed())
 				MinecraftClient.getInstance().openScreen(new ConfigurationScreen(new ConfigurationGui()));
 		});
-
-		System.out.println("Hello Fabric world!");
 	}
 }
