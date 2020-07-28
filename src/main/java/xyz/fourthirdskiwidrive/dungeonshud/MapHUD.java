@@ -5,6 +5,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.chunk.Chunk;
 import xyz.fourthirdskiwidrive.dungeonshud.map.DimensionData;
 import net.minecraft.block.AirBlock;
@@ -57,10 +59,15 @@ public class MapHUD extends HUDComponent {
         }
     }
 
+    public void renderPlayerLocation(MatrixStack m, float partial, MinecraftClient client) {
+
+    }
+
     @Override
     public void render(MatrixStack m, float partial, MinecraftClient client) {
         MinecraftClient client2 = MinecraftClient.getInstance();
         renderDetailedMap(m, partial, client2);
-
+        Vec3d pos = client.player.getPos();
+        drawSprite(pos.x*1.25 + 20, pos.z*1.25 + 20, 5, 5, new Identifier("minecraft:textures/item/redstone.png"), client);
     }
 }

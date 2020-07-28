@@ -1,6 +1,7 @@
 package xyz.fourthirdskiwidrive.dungeonshud;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.BufferBuilder;
@@ -8,7 +9,9 @@ import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Matrix4f;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
@@ -100,5 +103,9 @@ public abstract class HUDComponent extends DrawableHelper {
         BufferRenderer.draw(bufferBuilder);
         RenderSystem.enableTexture();
         RenderSystem.disableBlend();
+    }
+
+    public void drawSprite(double x, double y, int width, int height, Identifier id, MinecraftClient client) {
+        ScreenDrawing.texturedRect((int)x, (int)y, width, height, id, 0F, 0F, 1F, 1F, 0xFFFFFFFF);
     }
 }
