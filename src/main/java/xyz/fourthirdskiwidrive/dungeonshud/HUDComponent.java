@@ -29,23 +29,30 @@ public abstract class HUDComponent extends DrawableHelper {
     }
 
     public static void drawVerticalLine(MatrixStack matrices, float x, float y1, float y2, float thickness) {
+        drawVerticalLine(matrices, x, y1, y2, thickness, Color.GRAY);
+    }
+
+    public static void drawVerticalLine(MatrixStack matrices, float x, float y1, float y2, float thickness, Color c) {
         if (y2 < y1) {
             float i = y1;
             y1 = y2;
             y2 = i;
         }
 
-        fill(matrices, (float)(x - .5 * thickness), (float)(y1 + .5 * thickness), (float)(x + .5 * thickness), (float)(y2 - .5 * thickness));
+        fill(matrices, (float)(x - .5 * thickness), (float)(y1 + .5 * thickness), (float)(x + .5 * thickness), (float)(y2 - .5 * thickness), c.getRGB());
     }
 
     public static void drawHorizontalLine(MatrixStack matrices, float x1, float x2, float y, float thickness) {
+        drawHorizontalLine(matrices, x1, x2, y, thickness, Color.GRAY);
+    }
+    public static void drawHorizontalLine(MatrixStack matrices, float x1, float x2, float y, float thickness, Color c) {
         if (x2 < x1) {
             float i = x1;
             x1 = x2;
             x2 = i;
         }
 
-        fill(matrices, (float)(x1 - .5 * thickness), (float)(y + .5 * thickness), (float)(x2 + .5 * thickness), (float)(y - .5 * thickness));
+        fill(matrices, (float)(x1 - .5 * thickness), (float)(y + .5 * thickness), (float)(x2 + .5 * thickness), (float)(y - .5 * thickness), c.getRGB());
     }
 
     public static void fill(MatrixStack matrices, float x1, float y1, float x2, float y2) {

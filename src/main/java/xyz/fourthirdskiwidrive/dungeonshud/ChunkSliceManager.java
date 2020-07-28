@@ -1,8 +1,15 @@
 package xyz.fourthirdskiwidrive.dungeonshud;
 
+import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.data.client.model.BlockStateSupplier;
 import net.minecraft.world.chunk.Chunk;
 import xyz.fourthirdskiwidrive.dungeonshud.map.DimensionData;
+import net.minecraft.state.property.Property;
 
 import java.util.ArrayList;
 
@@ -42,5 +49,18 @@ public class ChunkSliceManager {
             if (this.slices.get(0).get(i).isEmpty())
                 yNeeded = i;
         }
+    }
+
+    public Block getIndividualBlock(int x, int y) {
+        Block ret;
+        if(x >= 0 && y >= 0) {
+            ret = slices.get(x >> 4).get(y >> 4).blocks[x & 15][y & 15].getBlock();
+        }
+        else {
+            ret = Blocks.AIR;
+        }
+
+
+        return ret;
     }
 }
