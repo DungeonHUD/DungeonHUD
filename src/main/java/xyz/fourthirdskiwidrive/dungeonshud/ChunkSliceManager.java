@@ -14,24 +14,32 @@ import net.minecraft.state.property.Property;
 import java.util.ArrayList;
 
 public class ChunkSliceManager {
-    public ArrayList<ArrayList<ChunkSlice>> slices = new ArrayList<ArrayList<ChunkSlice>>();
+    public ArrayList<ArrayList<ChunkSlice>> slices = new ArrayList<>();
     private static ChunkSliceManager instance = null;
     private Boolean hasDoneThisAtLeastOnce = false;
 
     public int xNeeded = 16;
     public int yNeeded = 16;
 
+    public boolean updated = false;
+
     public static ChunkSliceManager getInstance() {
         if(instance == null) instance = new ChunkSliceManager();
         return instance;
     }
 
+    public boolean hasChanged() {
+        boolean uRecord = updated;
+        updated = false;
+        return uRecord;
+    }
+
     public void update() {
-        ArrayList<ArrayList<ChunkSlice>> chunkSlices = new ArrayList<ArrayList<ChunkSlice>>();
+        ArrayList<ArrayList<ChunkSlice>> chunkSlices = new ArrayList<>();
         DimensionData dimensionData = DimensionData.getInstance();
         MinecraftClient c = MinecraftClient.getInstance();
         for(int i = 0; i < 16; i++) {
-            ArrayList<ChunkSlice> currentChunkRow = new ArrayList<ChunkSlice>();
+            ArrayList<ChunkSlice> currentChunkRow = new ArrayList<>();
             for (int j = 0; j < 16; ++j) {
                 ChunkSlice cs = dimensionData.getChunkSlice(i, j, c);
                 currentChunkRow.add(cs);
@@ -40,6 +48,7 @@ public class ChunkSliceManager {
         }
 
         slices = chunkSlices;
+        updated = true;
     }
 
     public void updateSizes() {

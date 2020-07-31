@@ -9,6 +9,11 @@ import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 import xyz.fourthirdskiwidrive.dungeonshud.gui.ConfigurationGui;
 import xyz.fourthirdskiwidrive.dungeonshud.gui.ConfigurationScreen;
+import xyz.fourthirdskiwidrive.dungeonshud.updatethread.UpdateMapThread;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class DungeonsHUD implements ModInitializer {
 	public static KeyBinding menuKeyBinding;
@@ -31,5 +36,12 @@ public class DungeonsHUD implements ModInitializer {
 			while (menuKeyBinding.wasPressed())
 				MinecraftClient.getInstance().openScreen(new ConfigurationScreen(new ConfigurationGui()));
 		});
+
+		UpdateMapThread mapThread = new UpdateMapThread();
+		ActionListener mapThreadUpdateTrigger = e -> mapThread.update();
+
+		Timer timer = new Timer(500, mapThreadUpdateTrigger);
+		timer.setRepeats(true);
+		timer.start();
 	}
 }
