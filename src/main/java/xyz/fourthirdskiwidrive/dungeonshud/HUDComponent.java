@@ -1,13 +1,11 @@
 package xyz.fourthirdskiwidrive.dungeonshud;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.render.BufferBuilder;
-import net.minecraft.client.render.BufferRenderer;
-import net.minecraft.client.render.Tessellator;
-import net.minecraft.client.render.VertexFormats;
+import net.minecraft.client.render.*;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Matrix4f;
@@ -107,5 +105,35 @@ public abstract class HUDComponent extends DrawableHelper {
 
     public void drawSprite(double x, double y, int width, int height, Identifier id, MinecraftClient client) {
         ScreenDrawing.texturedRect((int)x, (int)y, width, height, id, 0F, 0F, 1F, 1F, 0xFFFFFFFF);
+    }
+
+    // draw rectangle with texture stretched to fill the shape
+    public static void drawTexturedRect(MatrixStack m, double x, double y, double w, double h)
+    {
+        drawTexturedRect(m.peek().getModel(), x, y, w, h, 0.0D, 0.0D, 1.0D, 1.0D);
+    }
+
+    // draw rectangle with texture UV coordinates specified (so only part of the
+    // texture fills the rectangle).
+    public static void drawTexturedRect(Matrix4f matrix, double x, double y, double w, double h, double u1, double v1, double u2, double v2)
+    {
+        try
+        {
+            BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
+            RenderSystem.enableBlend();
+            RenderSystem.enableTexture();
+            RenderSystem.defaultBlendFunc();
+            bufferBuilder.begin(7, VertexFormats.POSITION_COLOR);
+            bufferBuilder.vertex(matrix, (float)(x    ), (float)(y + h), 0.0F).texture((float)u1, (float)v2).next();
+            bufferBuilder.vertex(matrix, (float)(x + w), (float)(y + h), 0.0F).texture((float)u2, (float)v2).next();
+            bufferBuilder.vertex(matrix, (float)(x + w), (float)(y    ), 0.0F).texture((float)u2, (float)v1).next();
+            bufferBuilder.vertex(matrix, (float)(x    ), (float)(y    ), 0.0F).texture((float)u1, (float)v1).next();
+            bufferBuilder.end();
+            BufferRenderer.draw(bufferBuilder);
+        }
+        catch (NullPointerException e)
+        {
+            System.err.println("HUDComponent.drawTexturedRect: null pointer exception");
+        }
     }
 }

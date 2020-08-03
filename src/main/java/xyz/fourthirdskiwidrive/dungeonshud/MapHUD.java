@@ -10,6 +10,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.chunk.Chunk;
 import xyz.fourthirdskiwidrive.dungeonshud.map.DimensionData;
 import net.minecraft.block.AirBlock;
+import xyz.fourthirdskiwidrive.dungeonshud.map.MapTexture;
+import xyz.fourthirdskiwidrive.dungeonshud.map.MapTexturer;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -20,11 +22,9 @@ public class MapHUD extends HUDComponent {
 
     }
 
-    //@Deprecated
+    @Deprecated
     public void renderDetailedMap(MatrixStack m, float partial, MinecraftClient client) {
 
-        //TODO: This method is extremely slow. I need to find a new way to render things. I've already moved getting the
-        //TODO: blocks from the world to another thread. Perhaps I can create a texture elsewhere and render it like that?
         ArrayList<ArrayList<ChunkSlice>> chunkSlices;
 
         ChunkSliceManager csm = ChunkSliceManager.getInstance();
@@ -64,12 +64,6 @@ public class MapHUD extends HUDComponent {
 
     @Override
     public void render(MatrixStack m, float partial, MinecraftClient client) {
-        MinecraftClient client2 = MinecraftClient.getInstance();
-
-        renderDetailedMap(m, partial, client2);
-        if(client.player != null) {
-            Vec3d pos = client.player.getPos();
-            drawSprite(pos.x * 1.25 + 20, pos.z * 1.25 + 20, 5, 5, new Identifier("minecraft:textures/item/redstone.png"), client);
-        }
+        MapTexturer.getInstance().texture.draw(20, 20, 0, 0, 200, 200, 1);
     }
 }
