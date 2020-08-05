@@ -1,6 +1,6 @@
 package xyz.fourthirdskiwidrive.dungeonshud.rooms;
 
-import xyz.fourthirdskiwidrive.dungeonshud.rooms.Corridors.OneByOne.Chest;
+import xyz.fourthirdskiwidrive.dungeonshud.rooms.corridors.onebyone.Chest;
 
 public abstract class Corridor extends Room {
     public enum RoomShape {

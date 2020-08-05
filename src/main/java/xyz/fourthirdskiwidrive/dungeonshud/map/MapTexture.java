@@ -3,23 +3,15 @@ package xyz.fourthirdskiwidrive.dungeonshud.map;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.render.BufferBuilder;
-import net.minecraft.client.render.BufferRenderer;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormats;
-import net.minecraft.client.texture.AbstractTexture;
-import net.minecraft.client.texture.ResourceTexture;
-import net.minecraft.resource.ResourceManager;
-import net.minecraft.util.Identifier;
 import org.lwjgl.opengl.GL11;
-import xyz.fourthirdskiwidrive.dungeonshud.ChunkSlice;
 import xyz.fourthirdskiwidrive.dungeonshud.ChunkSliceManager;
 import xyz.fourthirdskiwidrive.dungeonshud.gui.ConfigurationGui;
 import xyz.fourthirdskiwidrive.dungeonshud.util.RenderUtil;
 import xyz.fourthirdskiwidrive.dungeonshud.util.Texture;
 
 import java.awt.*;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class MapTexture extends Texture {
 

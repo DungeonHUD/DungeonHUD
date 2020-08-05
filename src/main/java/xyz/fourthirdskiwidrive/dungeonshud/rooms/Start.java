@@ -1,7 +1,6 @@
 package xyz.fourthirdskiwidrive.dungeonshud.rooms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Start extends Room {
     public Start (int x, int z, int r) {

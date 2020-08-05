@@ -1,11 +1,5 @@
 package xyz.fourthirdskiwidrive.dungeonshud.map;
 
-import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.texture.AbstractTexture;
-import net.minecraft.client.texture.ResourceTexture;
-import net.minecraft.data.client.model.Texture;
-import net.minecraft.world.chunk.Chunk;
 import xyz.fourthirdskiwidrive.dungeonshud.ChunkSliceManager;
 
 

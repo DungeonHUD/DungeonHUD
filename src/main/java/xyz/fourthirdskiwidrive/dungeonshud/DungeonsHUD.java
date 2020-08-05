@@ -9,11 +9,9 @@ import net.minecraft.client.util.InputUtil;
 import org.lwjgl.glfw.GLFW;
 import xyz.fourthirdskiwidrive.dungeonshud.gui.ConfigurationGui;
 import xyz.fourthirdskiwidrive.dungeonshud.gui.ConfigurationScreen;
-import xyz.fourthirdskiwidrive.dungeonshud.map.MapTexturer;
 import xyz.fourthirdskiwidrive.dungeonshud.updatethread.UpdateMapThread;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DungeonsHUD implements ModInitializer {

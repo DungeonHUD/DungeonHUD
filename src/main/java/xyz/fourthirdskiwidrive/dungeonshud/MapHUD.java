@@ -1,16 +1,9 @@
 package xyz.fourthirdskiwidrive.dungeonshud;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.chunk.Chunk;
-import xyz.fourthirdskiwidrive.dungeonshud.map.DimensionData;
-import net.minecraft.block.AirBlock;
-import xyz.fourthirdskiwidrive.dungeonshud.map.MapTexture;
 import xyz.fourthirdskiwidrive.dungeonshud.map.MapTexturer;
 
 import java.awt.*;
@@ -18,9 +11,6 @@ import java.util.ArrayList;
 
 public class MapHUD extends HUDComponent {
     public static final float BOX_SIZE = 200;
-    public MapHUD () {
-
-    }
 
     @Deprecated
     public void renderDetailedMap(MatrixStack m, float partial, MinecraftClient client) {

@@ -3,7 +3,7 @@ package xyz.fourthirdskiwidrive.dungeonshud.rooms;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import xyz.fourthirdskiwidrive.dungeonshud.ChunkSliceManager;
-import xyz.fourthirdskiwidrive.dungeonshud.rooms.Corridors.OneByTwo.ChestInTheMiddle;
+import xyz.fourthirdskiwidrive.dungeonshud.rooms.corridors.onebytwo.ChestInTheMiddle;
 
 import java.util.ArrayList;
 

@@ -5,7 +5,7 @@ import xyz.fourthirdskiwidrive.dungeonshud.ChunkSliceManager;
 import xyz.fourthirdskiwidrive.dungeonshud.map.MapTexturer;
 
 public class UpdateMapThread {
-    ChunkSliceManager csm;
+    private ChunkSliceManager csm;
     public static int UPDATE_TIME;
 
     public UpdateMapThread() {

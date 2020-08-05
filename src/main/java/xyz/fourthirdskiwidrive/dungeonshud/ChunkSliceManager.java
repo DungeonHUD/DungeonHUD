@@ -1,16 +1,10 @@
 package xyz.fourthirdskiwidrive.dungeonshud;
 
-import com.google.common.collect.ImmutableMap;
-import com.mojang.serialization.MapCodec;
+
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.data.client.model.BlockStateSupplier;
-import net.minecraft.world.chunk.Chunk;
 import xyz.fourthirdskiwidrive.dungeonshud.map.DimensionData;
-import net.minecraft.state.property.Property;
-
 import java.util.ArrayList;
 
 public class ChunkSliceManager {

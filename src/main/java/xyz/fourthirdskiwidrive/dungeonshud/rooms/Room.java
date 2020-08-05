@@ -1,11 +1,15 @@
 package xyz.fourthirdskiwidrive.dungeonshud.rooms;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 public abstract class Room {
+
+    public ArrayList<SecretSubPosition> Secrets;
+    protected final int xstart;
+    protected final int zstart;
+    protected final int rotation;
 
     public class SecretSubPosition {
         public int x;
@@ -17,11 +21,6 @@ public abstract class Room {
         public int y;
         public int z;
     }
-
-    public ArrayList<SecretSubPosition> Secrets;
-    protected final int xstart;
-    protected final int zstart;
-    protected final int rotation;
 
     public Room (int x, int z, int r) {
         xstart = x;

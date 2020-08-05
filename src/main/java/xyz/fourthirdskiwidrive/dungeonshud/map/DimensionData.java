@@ -1,18 +1,11 @@
 package xyz.fourthirdskiwidrive.dungeonshud.map;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.registry.RegistryKey;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.ChunkSection;
 import net.minecraft.world.chunk.ChunkStatus;
-import net.minecraft.world.dimension.DimensionType;
-import org.apache.commons.lang3.ObjectUtils;
 import xyz.fourthirdskiwidrive.dungeonshud.ChunkSlice;
 import xyz.fourthirdskiwidrive.dungeonshud.ChunkSliceManager;
 
