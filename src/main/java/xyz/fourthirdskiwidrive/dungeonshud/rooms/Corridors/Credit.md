@@ -1,0 +1,1 @@
+Thank you to TheBestBlok on the hypixel skyblock forum for compiling a nice list of corridors.

@@ -3,6 +3,7 @@ package xyz.fourthirdskiwidrive.dungeonshud.rooms;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import xyz.fourthirdskiwidrive.dungeonshud.ChunkSliceManager;
+import xyz.fourthirdskiwidrive.dungeonshud.rooms.Corridors.OneByTwo.ChestInTheMiddle;
 
 import java.util.ArrayList;
 
@@ -126,6 +127,10 @@ public class DungeonLayoutIdentifier {
         //TODO: Make this identify puzzle and start rooms. Maybe also miniboss rooms if those exist?
         else if(doorCount == 1 && connectCount == 0) {
             return new Puzzle(sectionx, sectionz, 0, Puzzle.PuzzleType.TICTACTOE);
+        }
+        else if(connectCount != 0) {
+            //TODO: Make it identify different corridor types and stuff
+            return new ChestInTheMiddle(sectionx, sectionz, 0);
         }
 
         return new GenericRoom(sectionx, sectionz, 0);

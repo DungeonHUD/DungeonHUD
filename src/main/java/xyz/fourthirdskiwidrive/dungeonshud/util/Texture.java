@@ -17,6 +17,8 @@ public class Texture {
     protected final int h;
     private final ByteBuffer pixelBuf;
     private byte[] bytes;
+    protected Object bytesLock;
+    protected boolean changed = false;
 
     public Texture(int w, int h, int fillColor, int minFilter, int maxFilter, int textureWrap) {
         this.id = -1;
@@ -47,10 +49,11 @@ public class Texture {
 
         int index = (x + y * this.w) * 4;
 
-        this.bytes[index] = a;
-        this.bytes[index + 1] = b;
-        this.bytes[index + 2] = g;
-        this.bytes[index + 3] = r;
+            this.bytes[index] = a;
+            this.bytes[index + 1] = r;
+            this.bytes[index + 2] = g;
+            this.bytes[index + 3] = b;
+
     }
 
     public void bind() {
@@ -70,9 +73,11 @@ public class Texture {
         if(this.id == -1)
             this.id = TextureUtil.generateId();
 
-        this.pixelBuf.clear();
-        this.pixelBuf.put(bytes);
-        this.pixelBuf.position(0).limit(bytes.length);
+
+            this.pixelBuf.clear();
+            this.pixelBuf.put(bytes);
+            this.pixelBuf.position(0).limit(bytes.length);
+
 
         this.bind();
         this.setTexParameters(GL11.GL_NEAREST, GL11.GL_NEAREST, GL12.GL_CLAMP_TO_EDGE);

@@ -13,6 +13,7 @@ import net.minecraft.util.Identifier;
 import org.lwjgl.opengl.GL11;
 import xyz.fourthirdskiwidrive.dungeonshud.ChunkSlice;
 import xyz.fourthirdskiwidrive.dungeonshud.ChunkSliceManager;
+import xyz.fourthirdskiwidrive.dungeonshud.gui.ConfigurationGui;
 import xyz.fourthirdskiwidrive.dungeonshud.util.RenderUtil;
 import xyz.fourthirdskiwidrive.dungeonshud.util.Texture;
 
@@ -27,8 +28,6 @@ public class MapTexture extends Texture {
     }
 
     public void updateTextureFromCSM(ChunkSliceManager csm) {
-        float xscale = Math.round((float)this.w / (csm.xNeeded * 32));
-        float zscale = Math.round((float)this.h / (csm.yNeeded * 32));
         for (int i = 0; i < csm.xNeeded; ++i) {
             for (int j = 0; j < csm.yNeeded; ++j) {
                 BlockState[][] blocks = csm.slices.get(i).get(j).blocks;
@@ -44,13 +43,13 @@ public class MapTexture extends Texture {
 
 
                         if(isAir) {
-                            this.fillRect((int)((16*i+k) * xscale), (int)((16*j+l) * zscale), (int)xscale, (int)zscale, 0x00000000);
+                            this.setColor((16*i+k), (16*j+l),0x00000000);
                         } else if (isWitherDoorBlock) {
-                            this.fillRect((int)((16*i+k) * xscale), (int)((16*j+l) * zscale), (int)xscale, (int)zscale, Color.BLACK.getRGB() & 0x77ffffff);
+                            this.setColor((16*i+k), (16*j+l),Color.BLACK.getRGB() & ConfigurationGui.opacityValue);
                         } else if (isBloodDoorBlock) {
-                            this.fillRect((int)((16*i+k) * xscale), (int)((16*j+l) * zscale), (int)xscale, (int)zscale, Color.RED.getRGB() & 0x77ffffff);
+                            this.setColor((16*i+k), (16*j+l),Color.RED.getRGB() & ConfigurationGui.opacityValue);
                         } else {
-                            this.fillRect((int)((16*i+k) * xscale), (int)((16*j+l) * zscale), (int)xscale, (int)zscale, Color.GRAY.getRGB() & 0x77ffffff);
+                            this.setColor((16*i+k), (16*j+l),Color.GRAY.getRGB() & ConfigurationGui.opacityValue);
                         }
                     }
                 }

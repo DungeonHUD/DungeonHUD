@@ -6,8 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "DHudMixin",
-    "CommandMixin"
+    "DHudMixin"
   ],
   "injectors": {
     "defaultRequire": 1
