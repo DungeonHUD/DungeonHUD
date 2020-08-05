@@ -6,7 +6,6 @@ DungeonsHUD is a fabric based mod designed to give the player an advantage in du
 -   Detailed map
 
 -   Wither door and blood door locator
-
 ## Planned features
 -   Room identification and highlighting
 
@@ -18,7 +17,7 @@ DungeonsHUD is a fabric based mod designed to give the player an advantage in du
 
 -   Autokick
 
-    - With no dupes, minimum levels (for each class individually), etc.
+    -   With no dupes, minimum levels (for each class individually), etc.
     
 -   Boss stage indicator
 

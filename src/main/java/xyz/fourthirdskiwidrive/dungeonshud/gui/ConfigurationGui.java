@@ -1,9 +1,13 @@
 package xyz.fourthirdskiwidrive.dungeonshud.gui;
 
+import io.github.cottonmc.cotton.gui.widget.WLabel;
+import io.github.cottonmc.cotton.gui.widget.WLabeledSlider;
+import io.github.cottonmc.cotton.gui.widget.WWidget;
 import io.github.cottonmc.cotton.gui.widget.data.Axis;
 
 import io.github.cottonmc.cotton.gui.client.LightweightGuiDescription;
-import io.github.cottonmc.cotton.gui.widget.*;
+import io.github.cottonmc.cotton.gui.widget.WPlainPanel;
+
 import net.minecraft.text.LiteralText;
 
 
@@ -20,9 +24,8 @@ public class ConfigurationGui extends LightweightGuiDescription {
 
         WLabeledSlider opacity = new WLabeledSlider(0, 0xff, Axis.HORIZONTAL) {
             @Override
-            public WWidget onMouseUp(int x, int y, int button) {
+            public void onMouseMove(int x, int y) {
                 opacityValue = (this.value << 24) + 0xffffff;
-                return this;
             }
         };
         opacity.setLabel(new LiteralText("Opacity"));

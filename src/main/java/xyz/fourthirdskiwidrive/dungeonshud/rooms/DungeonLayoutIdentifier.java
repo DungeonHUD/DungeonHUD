@@ -54,8 +54,6 @@ public class DungeonLayoutIdentifier {
         }
 
         //REMEMBER THAT THE WORLD SLICE HAS BLOCKS INDEXED AS 1 GREATER THAN THE ACTUAL COORDINATE IN EACH DIRECTION
-        final int ZOFFSET_NORTH = 0;
-        final int XOFFSET_WEST  = 0;
         final int XOFFSET_EAST  = 32;
         final int ZOFFSET_SOUTH = 32;
 
@@ -126,7 +124,13 @@ public class DungeonLayoutIdentifier {
         //want to start writing the code for larger corridor rooms
         //TODO: Make this identify puzzle and start rooms. Maybe also miniboss rooms if those exist?
         else if(doorCount == 1 && connectCount == 0) {
-            return new Puzzle(sectionx, sectionz, 0, Puzzle.PuzzleType.TICTACTOE);
+            return new Puzzle(sectionx, sectionz, 0, Puzzle.PuzzleType.TICTACTOE) {
+
+                @Override
+                public PuzzleType getPuzzleType() {
+                    return PuzzleType.TICTACTOE;
+                }
+            };
         }
         else if(connectCount != 0) {
             //TODO: Make it identify different corridor types and stuff

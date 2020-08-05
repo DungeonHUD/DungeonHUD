@@ -6,11 +6,10 @@ import xyz.fourthirdskiwidrive.dungeonshud.map.MapTexturer;
 
 public class UpdateMapThread {
     private ChunkSliceManager csm;
-    public static int UPDATE_TIME;
+    public static int UPDATE_TIME = 500;
 
     public UpdateMapThread() {
         csm = ChunkSliceManager.getInstance();
-        UPDATE_TIME = 500;
     }
 
     public void update() {

@@ -1,6 +1,6 @@
 package xyz.fourthirdskiwidrive.dungeonshud.rooms;
 
-public class Puzzle extends Room {
+public abstract class Puzzle extends Room {
     public enum PuzzleType {
         CREEPER,
         BLAZE,
@@ -13,25 +13,18 @@ public class Puzzle extends Room {
         SILVERFISH,
     }
 
-    private PuzzleType puzzleType;
+    protected PuzzleType puzzleType;
     public Puzzle(int x, int z, int r, PuzzleType p) {
         super(x, z, r);
         this.puzzleType = p;
-
-        //TODO: Write code for puzzle room secrets
-        /*
-        Secrets = new ArrayList<SecretSubPosition> (
-            Arrays.asList(
-
-            )
-        );
-         */
     }
 
     @Override
     public RoomType getRoomType() {
         return RoomType.PUZZLE;
     }
+
+    public abstract PuzzleType getPuzzleType();
 
 
 }

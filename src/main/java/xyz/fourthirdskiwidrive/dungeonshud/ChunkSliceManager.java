@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class ChunkSliceManager {
     public ArrayList<ArrayList<ChunkSlice>> slices = new ArrayList<>();
     private static ChunkSliceManager instance = null;
-    private Boolean hasDoneThisAtLeastOnce = false;
 
     public int xNeeded = 16;
     public int yNeeded = 16;

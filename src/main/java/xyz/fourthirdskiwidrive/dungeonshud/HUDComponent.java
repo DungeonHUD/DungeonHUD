@@ -4,7 +4,10 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.render.*;
+import net.minecraft.client.render.BufferBuilder;
+import net.minecraft.client.render.BufferRenderer;
+import net.minecraft.client.render.Tessellator;
+import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Matrix4f;
@@ -32,26 +35,28 @@ public abstract class HUDComponent extends DrawableHelper {
     }
 
     public static void drawVerticalLine(MatrixStack matrices, float x, float y1, float y2, float thickness, Color c) {
+        float yf1 = y1;
+        float yf2 = y2;
         if (y2 < y1) {
-            float i = y1;
-            y1 = y2;
-            y2 = i;
+            yf1 = y2;
+            yf2 = y1;
         }
 
-        fill(matrices, (float)(x - .5 * thickness), (float)(y1 + .5 * thickness), (float)(x + .5 * thickness), (float)(y2 - .5 * thickness), c.getRGB());
+        fill(matrices, (float)(x - .5 * thickness), (float)(yf1 + .5 * thickness), (float)(x + .5 * thickness), (float)(yf2 - .5 * thickness), c.getRGB());
     }
 
     public static void drawHorizontalLine(MatrixStack matrices, float x1, float x2, float y, float thickness) {
         drawHorizontalLine(matrices, x1, x2, y, thickness, Color.GRAY);
     }
     public static void drawHorizontalLine(MatrixStack matrices, float x1, float x2, float y, float thickness, Color c) {
+        float xf1 = x1;
+        float xf2 = x2;
         if (x2 < x1) {
-            float i = x1;
-            x1 = x2;
-            x2 = i;
+            xf1 = x2;
+            xf2 = x1;
         }
 
-        fill(matrices, (float)(x1 - .5 * thickness), (float)(y + .5 * thickness), (float)(x2 + .5 * thickness), (float)(y - .5 * thickness), c.getRGB());
+        fill(matrices, (float)(xf1 - .5 * thickness), (float)(y + .5 * thickness), (float)(xf2 + .5 * thickness), (float)(y - .5 * thickness), c.getRGB());
     }
 
     public static void fill(MatrixStack matrices, float x1, float y1, float x2, float y2) {
@@ -68,7 +73,12 @@ public abstract class HUDComponent extends DrawableHelper {
         );
     }
 
-    private static void fill(Matrix4f matrix, float x1, float y1, float x2, float y2, int color) {
+    private static void fill(Matrix4f matrix, float xi1, float yi1, float xi2, float yi2, int color) {
+        float x1 = xi1;
+        float x2 = xi2;
+        float y1 = yi1;
+        float y2 = yi2;
+
         float j;
 
         if (x1 < x2) {

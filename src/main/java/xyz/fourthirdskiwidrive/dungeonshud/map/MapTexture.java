@@ -16,7 +16,7 @@ import java.awt.*;
 public class MapTexture extends Texture {
 
     public MapTexture(int textureWidth, int textureHeight) {
-        super(textureWidth, textureHeight, 0x00000000, GL11.GL_LINEAR, GL11.GL_LINEAR, GL11.GL_REPEAT);
+        super(textureWidth, textureHeight, 0x00000000);
     }
 
     public void updateTextureFromCSM(ChunkSliceManager csm) {

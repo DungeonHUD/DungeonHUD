@@ -17,7 +17,7 @@ public class Texture {
     protected Object bytesLock;
     protected boolean changed = false;
 
-    public Texture(int w, int h, int fillColor, int minFilter, int maxFilter, int textureWrap) {
+    public Texture(int w, int h, int fillColor) {
         this.id = -1;
         this.w = w;
         this.h = h;

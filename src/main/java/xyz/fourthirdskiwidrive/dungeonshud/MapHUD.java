@@ -48,10 +48,6 @@ public class MapHUD extends HUDComponent {
         }
     }
 
-    public void renderPlayerLocation(MatrixStack m, float partial, MinecraftClient client) {
-
-    }
-
     @Override
     public void render(MatrixStack m, float partial, MinecraftClient client) {
         MapTexturer.getInstance().texture.draw(20, 20, 0, 0, 200, 200, 1);
