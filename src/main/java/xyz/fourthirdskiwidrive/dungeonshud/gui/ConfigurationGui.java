@@ -2,7 +2,6 @@ package xyz.fourthirdskiwidrive.dungeonshud.gui;
 
 import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.WLabeledSlider;
-import io.github.cottonmc.cotton.gui.widget.WWidget;
 import io.github.cottonmc.cotton.gui.widget.data.Axis;
 
 import io.github.cottonmc.cotton.gui.client.LightweightGuiDescription;
