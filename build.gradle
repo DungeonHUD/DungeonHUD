@@ -10,11 +10,37 @@ repositories {
 	}
 }
 
+def getGitHash = { ->
+	def stdout = new ByteArrayOutputStream()
+	exec {
+		commandLine 'git', 'rev-parse', '--short', 'HEAD'
+		standardOutput = stdout
+	}
+	return stdout.toString().trim()
+}
+
+def getGitMsg = { ->
+	def stdout = new ByteArrayOutputStream()
+	exec {
+		commandLine 'git', 'log', '-1', '--pretty=%B'
+		standardOutput = stdout
+	}
+	return stdout.toString().trim()
+}
+
+def getVersion = { ->
+	def msgfl = getGitMsg().readLines().get(0)
+	if (msgfl.startsWith("1.")) {
+		return msgfl
+	}
+	return getGitHash()
+}
+
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = project.archives_base_name
-version = project.mod_version
+version = getVersion()
 group = project.maven_group
 
 dependencies {
