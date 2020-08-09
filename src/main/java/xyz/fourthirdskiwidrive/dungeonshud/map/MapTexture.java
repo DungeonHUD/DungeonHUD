@@ -7,7 +7,6 @@ import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormats;
 import org.lwjgl.opengl.GL11;
 import xyz.fourthirdskiwidrive.dungeonshud.ChunkSliceManager;
-import xyz.fourthirdskiwidrive.dungeonshud.gui.ConfigurationGui;
 import xyz.fourthirdskiwidrive.dungeonshud.util.RenderUtil;
 import xyz.fourthirdskiwidrive.dungeonshud.util.Texture;
 
@@ -37,11 +36,11 @@ public class MapTexture extends Texture {
                         if(isAir) {
                             this.setColor((16*i+k), (16*j+l),0x00000000);
                         } else if (isWitherDoorBlock) {
-                            this.setColor((16*i+k), (16*j+l),Color.BLACK.getRGB() & ConfigurationGui.opacityValue);
+                            this.setColor((16*i+k), (16*j+l),Color.BLACK.getRGB() & 0x77ffffff);
                         } else if (isBloodDoorBlock) {
-                            this.setColor((16*i+k), (16*j+l),Color.RED.getRGB() & ConfigurationGui.opacityValue);
+                            this.setColor((16*i+k), (16*j+l),Color.RED.getRGB() & 0x77ffffff);
                         } else {
-                            this.setColor((16*i+k), (16*j+l),Color.GRAY.getRGB() & ConfigurationGui.opacityValue);
+                            this.setColor((16*i+k), (16*j+l),Color.GRAY.getRGB() & 0x77ffffff);
                         }
                     }
                 }
